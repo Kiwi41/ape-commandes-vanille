@@ -1,14 +1,14 @@
-# 🌿 Générateur de Bons de Commande - Vente de Vanille APE
+﻿# ðŸŒ¿ GÃ©nÃ©rateur de Bons de Commande - Vente de Vanille APE
 
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/badge/release-v1.3.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
 
-Script Python pour générer automatiquement des bons de commande imprimables à partir d'un export CSV de commandes de produits vanille (ou tout autre produit).
+Script Python pour gÃ©nÃ©rer automatiquement des bons de commande imprimables Ã  partir d'un export CSV de commandes de produits vanille (ou tout autre produit).
 
-## 🚀 Démarrage rapide
+## ðŸš€ DÃ©marrage rapide
 
-### Interface Graphique (Recommandé pour débutants)
+### Interface Graphique (RecommandÃ© pour dÃ©butants)
 
 ```bash
 # Windows : double-cliquez sur lancer_gui.bat
@@ -24,62 +24,61 @@ git clone https://github.com/Kiwi41/ape-commandes-vanille.git
 cd ape-commandes-vanille
 python generer_bons_commande.py
 
-# Avec export PDF
-python generer_bons_commande.py --pdf
+
 ```
 
-📖 **Guides disponibles** :
-- [🖥️ Guide Interface Graphique](GUI_GUIDE.md) - Utilisation de l'interface visuelle (recommandé)
-- [⚡ Démarrage rapide](QUICKSTART.md) - Premiers pas et exemples en ligne de commande
-- [📄 Installation PDF](INSTALL_PDF.md) - Installer weasyprint pour l'export PDF
-- [🤝 Contribution](CONTRIBUTING.md) - Comment contribuer au projet
-- [📝 Changelog](CHANGELOG.md) - Historique des versions
+ðŸ“– **Guides disponibles** :
+- [ðŸ–¥ï¸ Guide Interface Graphique](GUI_GUIDE.md) - Utilisation de l'interface visuelle (recommandÃ©)
+- [âš¡ DÃ©marrage rapide](QUICKSTART.md) - Premiers pas et exemples en ligne de commande
+- [ðŸ“„ Installation PDF](INSTALL_PDF.md) - Installer weasyprint pour l'export PDF
+- [ðŸ¤ Contribution](CONTRIBUTING.md) - Comment contribuer au projet
+- [ðŸ“ Changelog](CHANGELOG.md) - Historique des versions
 
-## 📋 Table des matières
+## ðŸ“‹ Table des matiÃ¨res
 
-- [Fonctionnalités](#-fonctionnalités)
-- [Prérequis](#-prérequis)
+- [FonctionnalitÃ©s](#-fonctionnalitÃ©s)
+- [PrÃ©requis](#-prÃ©requis)
 - [Installation](#-installation)
 - [Utilisation](#-utilisation)
 - [Format du CSV](#-format-du-csv)
 - [Personnalisation](#-personnalisation)
 - [Exemples](#-exemples)
-- [Captures d'écran](#-captures-décran)
+- [Captures d'Ã©cran](#-captures-dÃ©cran)
 - [Contribution](#-contribution)
 - [Licence](#-licence)
 
-## ✨ Fonctionnalités
+## âœ¨ FonctionnalitÃ©s
 
-- **�️ Interface Graphique** : Application conviviale pour utilisateurs non techniques
-- **�📊 Analyse automatique** : Détection automatique du fichier CSV et extraction de la période de commandes
-- **👥 Regroupement par payeur** : Consolidation de toutes les commandes d'une même famille sur un seul bon
-- **🎨 Code couleur visuel** :
-  - 🟢 **Vert** : Commandes avec classe assignée (livraison facilitée)
-  - 🟠 **Orange** : Commandes sans classe (nécessite vérification)
-- **� Statistiques par classe** :
+- **ï¿½ï¸ Interface Graphique** : Application conviviale pour utilisateurs non techniques
+- **ï¿½ðŸ“Š Analyse automatique** : DÃ©tection automatique du fichier CSV et extraction de la pÃ©riode de commandes
+- **ðŸ‘¥ Regroupement par payeur** : Consolidation de toutes les commandes d'une mÃªme famille sur un seul bon
+- **ðŸŽ¨ Code couleur visuel** :
+  - ðŸŸ¢ **Vert** : Commandes avec classe assignÃ©e (livraison facilitÃ©e)
+  - ðŸŸ  **Orange** : Commandes sans classe (nÃ©cessite vÃ©rification)
+- **ï¿½ Statistiques par classe** :
   - Nombre d'enfants par classe
   - Nombre de familles par classe
   - Montant total par classe
-  - Tableau récapitulatif interactif dans le HTML
-- **�💳 Icônes de paiement** :
-  - 💳 Carte bancaire
-  - 💵 Espèces
-  - 📝 Chèque
-  - 🏦 Virement
-  - 🅿️ PayPal
-  - 💰 Autre
-- **� Export PDF** : Génération directe de PDF prêts à imprimer (optionnel)
-- **�🖨️ Optimisé pour l'impression** : Découpe facile avec bordures en pointillés
-- **📱 Responsive** : Affichage adapté à tous les écrans
-- **🔄 Réutilisable** : Configuration simple pour de futures campagnes de vente
+  - Tableau rÃ©capitulatif interactif dans le HTML
+- **ï¿½ðŸ’³ IcÃ´nes de paiement** :
+  - ðŸ’³ Carte bancaire
+  - ðŸ’µ EspÃ¨ces
+  - ðŸ“ ChÃ¨que
+  - ðŸ¦ Virement
+  - ðŸ…¿ï¸ PayPal
+  - ðŸ’° Autre
+- **ï¿½ Export PDF** : GÃ©nÃ©ration directe de PDF prÃªts Ã  imprimer (optionnel)
+- **ï¿½ðŸ–¨ï¸ OptimisÃ© pour l'impression** : DÃ©coupe facile avec bordures en pointillÃ©s
+- **ðŸ“± Responsive** : Affichage adaptÃ© Ã  tous les Ã©crans
+- **ðŸ”„ RÃ©utilisable** : Configuration simple pour de futures campagnes de vente
 
-## 🔧 Prérequis
+## ðŸ”§ PrÃ©requis
 
-- **Python 3.7+** (aucune dépendance externe requise pour la génération HTML)
-- Un fichier CSV d'export de commandes (format détaillé ci-dessous)
+- **Python 3.7+** (aucune dÃ©pendance externe requise pour la gÃ©nÃ©ration HTML)
+- Un fichier CSV d'export de commandes (format dÃ©taillÃ© ci-dessous)
 - **Optionnel pour PDF** : `weasyprint` (voir installation ci-dessous)
 
-## 📥 Installation
+## ðŸ“¥ Installation
 
 ### Option 1 : Clone du repository
 
@@ -95,21 +94,21 @@ cd ape-commandes-vanille
 git clone https://github.com/Kiwi41/ape-commandes-vanille.git
 cd ape-commandes-vanille
 
-# Installation des dépendances pour le PDF
+# Installation des dÃ©pendances pour le PDF
 pip install -r requirements.txt
 ```
 
-**Note Windows** : `weasyprint` nécessite GTK+ sur Windows.  
-📥 Téléchargez-le depuis : [GTK+ for Windows](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
+**Note Windows** : `weasyprint` nÃ©cessite GTK+ sur Windows.  
+ðŸ“¥ TÃ©lÃ©chargez-le depuis : [GTK+ for Windows](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
 
-### Option 3 : Téléchargement direct (sans Git)
+### Option 3 : TÃ©lÃ©chargement direct (sans Git)
 
-1. Téléchargez `generer_bons_commande.py`
+1. TÃ©lÃ©chargez `generer_bons_commande.py`
 2. Placez-le dans le dossier de votre choix
 
-## 🚀 Utilisation
+## ðŸš€ Utilisation
 
-### Mode 1 : Génération HTML simple (recommandé)
+### Mode 1 : GÃ©nÃ©ration HTML simple (recommandÃ©)
 
 Placez votre fichier CSV dans le dossier **Downloads** avec "vanille" dans le nom, puis lancez :
 
@@ -117,19 +116,19 @@ Placez votre fichier CSV dans le dossier **Downloads** avec "vanille" dans le no
 python generer_bons_commande.py
 ```
 
-Appuyez sur **Entrée** pour que le script détecte automatiquement le dernier fichier.
+Appuyez sur **EntrÃ©e** pour que le script dÃ©tecte automatiquement le dernier fichier.
 
-### Mode 2 : Génération avec export PDF
+### Mode 2 : GÃ©nÃ©ration avec export PDF
 
 ```bash
-# Générer HTML + PDF
+# GÃ©nÃ©rer HTML + PDF
 python generer_bons_commande.py --pdf
 
-# Générer uniquement le PDF (pas de HTML)
+# GÃ©nÃ©rer uniquement le PDF (pas de HTML)
 python generer_bons_commande.py --pdf-only
 ```
 
-### Mode 3 : Avec chemin de fichier spécifique
+### Mode 3 : Avec chemin de fichier spÃ©cifique
 
 ```bash
 # HTML seulement
@@ -143,10 +142,10 @@ python generer_bons_commande.py chemin/vers/votre/fichier.csv --pdf
 
 | Option | Description |
 |--------|-------------|
-| (aucune) | Génère uniquement le HTML et l'ouvre dans le navigateur |
-| `--pdf` | Génère HTML + PDF |
-| `--pdf-only` | Génère uniquement le PDF (pas de HTML) |
-| `-h, --help` | Affiche l'aide complète |
+| (aucune) | GÃ©nÃ¨re uniquement le HTML et l'ouvre dans le navigateur |
+| `--pdf` | GÃ©nÃ¨re HTML + PDF |
+| `--pdf-only` | GÃ©nÃ¨re uniquement le PDF (pas de HTML) |
+| `-h, --help` | Affiche l'aide complÃ¨te |
 
 ### Mode 2 : Avec argument
 
@@ -158,41 +157,41 @@ python generer_bons_commande.py chemin/vers/votre/fichier.csv
 
 ```bash
 python generer_bons_commande.py
-# Puis entrez le chemin du fichier CSV lorsque demandé
+# Puis entrez le chemin du fichier CSV lorsque demandÃ©
 ```
 
-### Résultat
+### RÃ©sultat
 
-Le script génère un fichier HTML nommé `bons_commande_[nom_du_csv].html` qui s'ouvre automatiquement dans votre navigateur par défaut.
+Le script gÃ©nÃ¨re un fichier HTML nommÃ© `bons_commande_[nom_du_csv].html` qui s'ouvre automatiquement dans votre navigateur par dÃ©faut.
 
-## 📄 Format du CSV
+## ðŸ“„ Format du CSV
 
-Le fichier CSV doit contenir les colonnes suivantes (séparateur `;`, encodage UTF-8) :
+Le fichier CSV doit contenir les colonnes suivantes (sÃ©parateur `;`, encodage UTF-8) :
 
 | Colonne | Description | Obligatoire |
 |---------|-------------|-------------|
-| `Référence commande` | Identifiant unique de la commande | ✅ |
-| `Classe de l'enfant` | Classe de l'enfant (ex: CE2 A) | ❌ |
-| `Prénom de l'enfant` | Prénom de l'enfant | ✅ |
-| `Nom de l'enfant` | Nom de l'enfant | ✅ |
-| `Prénom payeur` | Prénom du parent/payeur | ✅ |
-| `Nom payeur` | Nom du parent/payeur | ✅ |
-| `Email payeur` | Email du payeur | ❌ |
-| `n° de téléphone` | Téléphone du payeur | ❌ |
-| `Tarif` | Nom du produit commandé | ✅ |
-| `Montant tarif` | Prix unitaire (format: `10,00`) | ✅ |
-| `Date de la commande` | Date au format `DD/MM/YYYY` | ✅ |
-| `Moyen de paiement` | Mode de paiement (ex: "Carte bancaire") | ❌ |
+| `RÃ©fÃ©rence commande` | Identifiant unique de la commande | âœ… |
+| `Classe de l'enfant` | Classe de l'enfant (ex: CE2 A) | âŒ |
+| `PrÃ©nom de l'enfant` | PrÃ©nom de l'enfant | âœ… |
+| `Nom de l'enfant` | Nom de l'enfant | âœ… |
+| `PrÃ©nom payeur` | PrÃ©nom du parent/payeur | âœ… |
+| `Nom payeur` | Nom du parent/payeur | âœ… |
+| `Email payeur` | Email du payeur | âŒ |
+| `nÂ° de tÃ©lÃ©phone` | TÃ©lÃ©phone du payeur | âŒ |
+| `Tarif` | Nom du produit commandÃ© | âœ… |
+| `Montant tarif` | Prix unitaire (format: `10,00`) | âœ… |
+| `Date de la commande` | Date au format `DD/MM/YYYY` | âœ… |
+| `Moyen de paiement` | Mode de paiement (ex: "Carte bancaire") | âŒ |
 
 ### Exemple de fichier CSV
 
 ```csv
-Référence commande;Classe de l'enfant;Prénom de l'enfant;Nom de l'enfant;Prénom payeur;Nom payeur;Email payeur;n° de téléphone;Tarif;Montant tarif;Date de la commande;Moyen de paiement
+RÃ©fÃ©rence commande;Classe de l'enfant;PrÃ©nom de l'enfant;Nom de l'enfant;PrÃ©nom payeur;Nom payeur;Email payeur;nÂ° de tÃ©lÃ©phone;Tarif;Montant tarif;Date de la commande;Moyen de paiement
 CMD001;CE2 A;Marie;Dupont;Sophie;Dupont;sophie.dupont@email.com;0612345678;12 gousses 14cm;10,00;17/11/2025;Carte bancaire
 CMD002;CE2 A;Marie;Dupont;Sophie;Dupont;sophie.dupont@email.com;0612345678;Poudre de vanille 25g;5,00;17/11/2025;Carte bancaire
 ```
 
-## ⚙️ Personnalisation
+## âš™ï¸ Personnalisation
 
 Modifiez la section **CONFIGURATION** dans le script (lignes 12-50) :
 
@@ -202,7 +201,7 @@ PRODUIT_NOM = "Gousses de Vanille Bourbon de Madagascar"
 
 # Association/Organisation
 ORGANISATION = "APE Villebarou"
-ORGANISATION_COMPLET = "APE Villebarou • Association de Parents d'Élèves"
+ORGANISATION_COMPLET = "APE Villebarou â€¢ Association de Parents d'Ã‰lÃ¨ves"
 ```
 
 ### Adaptation pour d'autres produits
@@ -216,53 +215,53 @@ Ce script est facilement adaptable pour :
 
 Il suffit de modifier `PRODUIT_NOM` et `ORGANISATION` !
 
-## 📊 Exemples
+## ðŸ“Š Exemples
 
 ### Sortie console
 
 ```
 ======================================================================
-📊 ANALYSE DU FICHIER CSV
+ðŸ“Š ANALYSE DU FICHIER CSV
 ======================================================================
-✓ Période détectée : Période du 17/11/2025 au 08/12/2025
-✓ 31 payeur(s) avec commandes
-✓ Montant total : 1025.00 €
-✓ Fichier de sortie : bons_commande_export-vanille.html
-======================================================================
-
-======================================================================
-✅ BONS DE COMMANDE GÉNÉRÉS
+âœ“ PÃ©riode dÃ©tectÃ©e : PÃ©riode du 17/11/2025 au 08/12/2025
+âœ“ 31 payeur(s) avec commandes
+âœ“ Montant total : 1025.00 â‚¬
+âœ“ Fichier de sortie : bons_commande_export-vanille.html
 ======================================================================
 
-📄 Fichier créé : bons_commande_export-vanille.html
-📂 Emplacement : C:\Users\...\Downloads
-
-📊 Récapitulatif :
-   • Total de bons : 31
-   • Avec classe (vert) : 24
-   • Sans classe (orange) : 7
-   • Montant total : 1025.00 €
-   • Période : Période du 17/11/2025 au 08/12/2025
-
-💡 Ouverture automatique du fichier dans le navigateur...
+======================================================================
+âœ… BONS DE COMMANDE GÃ‰NÃ‰RÃ‰S
 ======================================================================
 
-✓ Fichier ouvert dans le navigateur
+ðŸ“„ Fichier crÃ©Ã© : bons_commande_export-vanille.html
+ðŸ“‚ Emplacement : C:\Users\...\Downloads
+
+ðŸ“Š RÃ©capitulatif :
+   â€¢ Total de bons : 31
+   â€¢ Avec classe (vert) : 24
+   â€¢ Sans classe (orange) : 7
+   â€¢ Montant total : 1025.00 â‚¬
+   â€¢ PÃ©riode : PÃ©riode du 17/11/2025 au 08/12/2025
+
+ðŸ’¡ Ouverture automatique du fichier dans le navigateur...
+======================================================================
+
+âœ“ Fichier ouvert dans le navigateur
 ```
 
 ### Structure d'un bon de commande
 
 Chaque bon contient :
-- ✂️ **Marques de découpe** (bordures en pointillés)
-- 📋 **Numéro de bon** et badge de statut (avec/sans classe)
-- 💳 **Nom du payeur** avec icône de paiement
-- 📞 **Coordonnées** (téléphone, email)
-- 👨‍👩‍👧‍👦 **Liste des enfants** avec leurs classes
-- 📦 **Produits commandés** avec quantités
-- 💰 **Total** de la commande
-- ✍️ **Zone de signature**
+- âœ‚ï¸ **Marques de dÃ©coupe** (bordures en pointillÃ©s)
+- ðŸ“‹ **NumÃ©ro de bon** et badge de statut (avec/sans classe)
+- ðŸ’³ **Nom du payeur** avec icÃ´ne de paiement
+- ðŸ“ž **CoordonnÃ©es** (tÃ©lÃ©phone, email)
+- ðŸ‘¨â€ðŸ‘©â€ðŸ‘§â€ðŸ‘¦ **Liste des enfants** avec leurs classes
+- ðŸ“¦ **Produits commandÃ©s** avec quantitÃ©s
+- ðŸ’° **Total** de la commande
+- âœï¸ **Zone de signature**
 
-## 📸 Captures d'écran
+## ðŸ“¸ Captures d'Ã©cran
 
 ### Bon avec classe (vert)
 ![Bon avec classe](docs/images/bon-avec-classe.png)
@@ -273,47 +272,49 @@ Chaque bon contient :
 ### Vue d'impression
 ![Vue d'impression](docs/images/impression.png)
 
-## 🤝 Contribution
+## ðŸ¤ Contribution
 
 Les contributions sont les bienvenues ! Pour contribuer :
 
 1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+2. CrÃ©ez une branche pour votre fonctionnalitÃ© (`git checkout -b feature/AmazingFeature`)
 3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
 
-### Idées d'améliorations
+### IdÃ©es d'amÃ©liorations
 
 - [ ] Export en PDF directement
 - [ ] Statistiques par classe
 - [ ] Filtrage par moyen de paiement
-- [ ] Support des remises/réductions
+- [ ] Support des remises/rÃ©ductions
 - [ ] Interface graphique (GUI)
 - [ ] Envoi automatique par email
 
-## 📝 Licence
+## ðŸ“ Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de dÃ©tails.
 
-## 👥 Auteurs
+## ðŸ‘¥ Auteurs
 
-- **APE Villebarou** - Association de Parents d'Élèves
+- **APE Villebarou** - Association de Parents d'Ã‰lÃ¨ves
 
-## 🙏 Remerciements
+## ðŸ™ Remerciements
 
 - Toutes les familles qui participent aux ventes APE
-- Les bénévoles qui organisent ces campagnes
-- La communauté Python pour les excellents outils
+- Les bÃ©nÃ©voles qui organisent ces campagnes
+- La communautÃ© Python pour les excellents outils
 
-## 📞 Support
+## ðŸ“ž Support
 
-Pour toute question ou problème :
+Pour toute question ou problÃ¨me :
 - Ouvrez une [issue](https://github.com/votre-username/ape-commandes-vanille/issues)
 - Contactez l'APE via [email@ape-villebarou.fr](mailto:email@ape-villebarou.fr)
 
 ---
 
-⭐ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile sur GitHub !
+â­ Si ce projet vous a aidÃ©, n'hÃ©sitez pas Ã  lui donner une Ã©toile sur GitHub !
 
-🌿 *Fait avec ❤️ pour faciliter le travail des associations de parents d'élèves*
+ðŸŒ¿ *Fait avec â¤ï¸ pour faciliter le travail des associations de parents d'Ã©lÃ¨ves*
+
+
