@@ -5,6 +5,39 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.3.0] - 2025-12-12
+
+### ✨ Ajouté
+- **Interface Graphique (GUI)** avec tkinter pour utilisateurs non techniques
+- Application `generer_gui.py` avec fonctionnalités complètes :
+  - Sélection de fichier CSV via bouton "Parcourir"
+  - Auto-détection intelligente dans le dossier Téléchargements
+  - Options PDF (avec/sans HTML) via cases à cocher
+  - Console de sortie en temps réel avec scrolling
+  - Barre de progression visuelle
+  - Ouverture automatique optionnelle des résultats
+- Scripts de lancement faciles :
+  - `lancer_gui.bat` pour Windows (double-clic)
+  - `lancer_gui.sh` pour Linux/macOS
+- Guide complet `GUI_GUIDE.md` avec :
+  - Instructions de lancement multi-plateformes
+  - Aperçu ASCII de l'interface
+  - Guide pas à pas d'utilisation
+  - Section de dépannage (installation tkinter)
+  - Conseils et raccourcis clavier
+
+### 🎨 Améliorations
+- Threading pour exécution non-bloquante de la génération
+- Gestion d'erreurs avec messages clairs dans la console GUI
+- Header vert APE (#4CAF50) pour identité visuelle
+- Redirection subprocess pour affichage temps réel
+- Vérification de disponibilité Python dans les lanceurs
+
+### 📚 Documentation
+- README mis à jour avec section GUI en tête
+- Guide GUI ajouté aux liens de documentation
+- Instructions différenciées débutants/ligne de commande
+
 ## [1.2.0] - 2025-12-12
 
 ### ✨ Ajouté

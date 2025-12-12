@@ -2,11 +2,21 @@
 
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub release](https://img.shields.io/badge/release-v1.2.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
+[![GitHub release](https://img.shields.io/badge/release-v1.3.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
 
 Script Python pour générer automatiquement des bons de commande imprimables à partir d'un export CSV de commandes de produits vanille (ou tout autre produit).
 
 ## 🚀 Démarrage rapide
+
+### Interface Graphique (Recommandé pour débutants)
+
+```bash
+# Windows : double-cliquez sur lancer_gui.bat
+# Ou :
+python generer_gui.py
+```
+
+### Ligne de commande
 
 ```bash
 # Clone et utilisation basique
@@ -19,7 +29,8 @@ python generer_bons_commande.py --pdf
 ```
 
 📖 **Guides disponibles** :
-- [⚡ Démarrage rapide](QUICKSTART.md) - Premiers pas et exemples
+- [🖥️ Guide Interface Graphique](GUI_GUIDE.md) - Utilisation de l'interface visuelle (recommandé)
+- [⚡ Démarrage rapide](QUICKSTART.md) - Premiers pas et exemples en ligne de commande
 - [📄 Installation PDF](INSTALL_PDF.md) - Installer weasyprint pour l'export PDF
 - [🤝 Contribution](CONTRIBUTING.md) - Comment contribuer au projet
 - [📝 Changelog](CHANGELOG.md) - Historique des versions
@@ -39,7 +50,8 @@ python generer_bons_commande.py --pdf
 
 ## ✨ Fonctionnalités
 
-- **📊 Analyse automatique** : Détection automatique du fichier CSV et extraction de la période de commandes
+- **�️ Interface Graphique** : Application conviviale pour utilisateurs non techniques
+- **�📊 Analyse automatique** : Détection automatique du fichier CSV et extraction de la période de commandes
 - **👥 Regroupement par payeur** : Consolidation de toutes les commandes d'une même famille sur un seul bon
 - **🎨 Code couleur visuel** :
   - 🟢 **Vert** : Commandes avec classe assignée (livraison facilitée)
