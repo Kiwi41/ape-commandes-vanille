@@ -28,8 +28,6 @@ class GenerateurGUI:
         
         # Variables
         self.csv_file = tk.StringVar()
-        self.generate_pdf = tk.BooleanVar(value=False)
-        self.pdf_only = tk.BooleanVar(value=False)
         self.auto_open = tk.BooleanVar(value=True)
         
         # Chemin du script principal
@@ -96,24 +94,29 @@ class GenerateurGUI:
         
         ttk.Checkbutton(
             options_frame,
-            text="📄 Générer aussi un fichier PDF (nécessite weasyprint)",
-            variable=self.generate_pdf,
-            command=self.update_pdf_options
-        ).pack(anchor='w', pady=5)
-        
-        self.pdf_only_check = ttk.Checkbutton(
-            options_frame,
-            text="📄 Générer uniquement le PDF (pas de HTML)",
-            variable=self.pdf_only,
-            state='disabled'
-        )
-        self.pdf_only_check.pack(anchor='w', pady=5)
-        
-        ttk.Checkbutton(
-            options_frame,
             text="🌐 Ouvrir automatiquement le fichier généré",
             variable=self.auto_open
         ).pack(anchor='w', pady=5)
+        
+        # Note PDF
+        note_label = ttk.Label(
+            options_frame,
+            text="💡 Pour obtenir un PDF : ouvrez le HTML dans votre navigateur et utilisez Ctrl+P → 'Enregistrer en PDF'",
+            foreground='#666',
+            wraplength=550,
+            justify='left'
+        )
+        note_label.pack(anchor='w', pady=(10, 0))
+        
+        # Note PDF
+        note_label = ttk.Label(
+            options_frame,
+            text="💡 Pour obtenir un PDF : ouvrez le HTML dans votre navigateur et utilisez Ctrl+P → 'Enregistrer en PDF'",
+            foreground='#666',
+            wraplength=550,
+            justify='left'
+        )
+        note_label.pack(anchor='w', pady=(10, 0))
         
         # Informations
         info_frame = ttk.LabelFrame(main_frame, text="ℹ️ Informations", padding="15")
@@ -210,14 +213,6 @@ class GenerateurGUI:
         except Exception as e:
             messagebox.showerror("Erreur", f"Erreur lors de la détection : {e}")
     
-    def update_pdf_options(self):
-        """Activer/désactiver l'option PDF uniquement"""
-        if self.generate_pdf.get():
-            self.pdf_only_check.config(state='normal')
-        else:
-            self.pdf_only.set(False)
-            self.pdf_only_check.config(state='disabled')
-    
     def log(self, message):
         """Ajouter un message dans la console de sortie"""
         self.output_text.insert('end', message + '\n')
@@ -259,12 +254,6 @@ class GenerateurGUI:
         try:
             # Construire la commande
             cmd = [sys.executable, str(self.script_path), self.csv_file.get()]
-            
-            if self.generate_pdf.get():
-                if self.pdf_only.get():
-                    cmd.append('--pdf-only')
-                else:
-                    cmd.append('--pdf')
             
             # Exécuter le script
             process = subprocess.Popen(
