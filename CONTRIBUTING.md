@@ -1,4 +1,4 @@
-# Guide de Contribution
+﻿# Guide de Contribution
 
 Merci de votre intérêt pour contribuer au projet ! 🎉
 
@@ -35,7 +35,6 @@ Merci de votre intérêt pour contribuer au projet ! 🎉
    - Testez vos changements
 4. **Committez** avec un message clair :
    ```bash
-   git commit -m "feat: ajout de l'export PDF"
    ```
 5. **Poussez** vers votre fork :
    ```bash
