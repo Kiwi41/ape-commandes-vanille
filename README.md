@@ -2,8 +2,27 @@
 
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/badge/release-v1.1.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
 
 Script Python pour générer automatiquement des bons de commande imprimables à partir d'un export CSV de commandes de produits vanille (ou tout autre produit).
+
+## 🚀 Démarrage rapide
+
+```bash
+# Clone et utilisation basique
+git clone https://github.com/Kiwi41/ape-commandes-vanille.git
+cd ape-commandes-vanille
+python generer_bons_commande.py
+
+# Avec export PDF
+python generer_bons_commande.py --pdf
+```
+
+📖 **Guides disponibles** :
+- [⚡ Démarrage rapide](QUICKSTART.md) - Premiers pas et exemples
+- [📄 Installation PDF](INSTALL_PDF.md) - Installer weasyprint pour l'export PDF
+- [🤝 Contribution](CONTRIBUTING.md) - Comment contribuer au projet
+- [📝 Changelog](CHANGELOG.md) - Historique des versions
 
 ## 📋 Table des matières
 
