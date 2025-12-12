@@ -8,7 +8,19 @@ Script Python pour générer automatiquement des bons de commande imprimables à
 
 ## 🚀 Démarrage rapide
 
-### Interface Graphique (Recommandé pour débutants)
+### 🎯 Option 1 : Exécutable Windows (Le plus simple !)
+
+**Aucune installation requise** - Idéal pour les non-développeurs.
+
+1. Téléchargez `APE_Bons_Commande.exe` depuis les [Releases](https://github.com/Kiwi41/ape-commandes-vanille/releases)
+2. Double-cliquez sur l'exécutable
+3. Sélectionnez votre fichier CSV et cliquez sur "Générer"
+
+✅ Fonctionne sur Windows 10/11 sans Python installé  
+📦 Taille : ~10 MB (Python embarqué)  
+🔧 Voir [BUILD_EXE.md](BUILD_EXE.md) pour créer votre propre exécutable
+
+### 🖥️ Option 2 : Interface Graphique (avec Python)
 
 ```bash
 # Windows : double-cliquez sur lancer_gui.bat
@@ -16,22 +28,19 @@ Script Python pour générer automatiquement des bons de commande imprimables à
 python generer_gui.py
 ```
 
-### Ligne de commande
+### ⚡ Option 3 : Ligne de commande
 
 ```bash
 # Clone et utilisation basique
 git clone https://github.com/Kiwi41/ape-commandes-vanille.git
 cd ape-commandes-vanille
 python generer_bons_commande.py
-
-# Avec export PDF
-python generer_bons_commande.py --pdf
 ```
 
 📖 **Guides disponibles** :
 - [🖥️ Guide Interface Graphique](GUI_GUIDE.md) - Utilisation de l'interface visuelle (recommandé)
+- [🏗️ Créer un Exécutable](BUILD_EXE.md) - Guide pour créer un .exe Windows autonome
 - [⚡ Démarrage rapide](QUICKSTART.md) - Premiers pas et exemples en ligne de commande
-- [📄 Installation PDF](INSTALL_PDF.md) - Installer  pour l'export PDF
 - [🤝 Contribution](CONTRIBUTING.md) - Comment contribuer au projet
 - [📝 Changelog](CHANGELOG.md) - Historique des versions
 

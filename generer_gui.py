@@ -31,7 +31,15 @@ class GenerateurGUI:
         self.auto_open = tk.BooleanVar(value=True)
         
         # Chemin du script principal
-        self.script_path = Path(__file__).parent / "generer_bons_commande.py"
+        # Déterminer le chemin du script (compatible PyInstaller)
+        if getattr(sys, 'frozen', False):
+            # Mode exécutable : utiliser le dossier temporaire de PyInstaller
+            base_path = Path(sys._MEIPASS)
+        else:
+            # Mode normal : utiliser le dossier du script
+            base_path = Path(__file__).parent
+        
+        self.script_path = base_path / "generer_bons_commande.py"
         
         self.create_widgets()
         self.check_script_exists()
