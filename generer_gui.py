@@ -108,16 +108,6 @@ class GenerateurGUI:
         )
         note_label.pack(anchor='w', pady=(10, 0))
         
-        # Note PDF
-        note_label = ttk.Label(
-            options_frame,
-            text="💡 Pour obtenir un PDF : ouvrez le HTML dans votre navigateur et utilisez Ctrl+P → 'Enregistrer en PDF'",
-            foreground='#666',
-            wraplength=550,
-            justify='left'
-        )
-        note_label.pack(anchor='w', pady=(10, 0))
-        
         # Informations
         info_frame = ttk.LabelFrame(main_frame, text="ℹ️ Informations", padding="15")
         info_frame.pack(fill='x', pady=(0, 15))
