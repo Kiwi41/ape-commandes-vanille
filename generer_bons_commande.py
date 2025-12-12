@@ -19,6 +19,13 @@ import sys
 import webbrowser
 import argparse
 
+# Configuration de l'encodage pour Windows
+if sys.platform == 'win32':
+    # Forcer l'encodage UTF-8 pour la sortie console
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 # ============================================================================
 # CONFIGURATION - Modifier ces paramètres selon vos besoins
 # ============================================================================
