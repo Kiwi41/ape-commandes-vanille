@@ -288,18 +288,18 @@ class GenerateurGUI:
                 self.root.after(0, self.log, "✅ GÉNÉRATION TERMINÉE AVEC SUCCÈS !")
                 self.root.after(0, self.log, "="*60)
                 
-                self.root.after(0, messagebox.showinfo, "Succès", 
+                self.root.after(0, lambda: messagebox.showinfo("Succès", 
                     "Les bons de commande ont été générés avec succès !\n\n"
-                    "Consultez la fenêtre de résultat pour plus de détails.")
+                    "Consultez la fenêtre de résultat pour plus de détails."))
             else:
                 self.root.after(0, self.log, "\n❌ Erreur lors de la génération")
-                self.root.after(0, messagebox.showerror, "Erreur",
+                self.root.after(0, lambda: messagebox.showerror("Erreur",
                     "Une erreur s'est produite lors de la génération.\n\n"
-                    "Consultez la fenêtre de résultat pour plus de détails.")
+                    "Consultez la fenêtre de résultat pour plus de détails."))
         
         except Exception as e:
             self.root.after(0, self.log, f"\n❌ Erreur : {e}")
-            self.root.after(0, messagebox.showerror, "Erreur", f"Erreur inattendue :\n{e}")
+            self.root.after(0, lambda: messagebox.showerror("Erreur", f"Erreur inattendue :\n{e}"))
         
         finally:
             self.root.after(0, self.progress.stop)
