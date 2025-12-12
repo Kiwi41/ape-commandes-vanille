@@ -32,32 +32,48 @@ Script Python pour générer automatiquement des bons de commande imprimables à
   - 🏦 Virement
   - 🅿️ PayPal
   - 💰 Autre
-- **🖨️ Optimisé pour l'impression** : Découpe facile avec bordures en pointillés
+- **� Export PDF** : Génération directe de PDF prêts à imprimer (optionnel)
+- **�🖨️ Optimisé pour l'impression** : Découpe facile avec bordures en pointillés
 - **📱 Responsive** : Affichage adapté à tous les écrans
 - **🔄 Réutilisable** : Configuration simple pour de futures campagnes de vente
 
 ## 🔧 Prérequis
 
-- **Python 3.7+** (aucune dépendance externe requise)
+- **Python 3.7+** (aucune dépendance externe requise pour la génération HTML)
 - Un fichier CSV d'export de commandes (format détaillé ci-dessous)
+- **Optionnel pour PDF** : `weasyprint` (voir installation ci-dessous)
 
 ## 📥 Installation
 
 ### Option 1 : Clone du repository
 
 ```bash
-git clone https://github.com/votre-username/ape-commandes-vanille.git
+git clone https://github.com/Kiwi41/ape-commandes-vanille.git
 cd ape-commandes-vanille
 ```
 
-### Option 2 : Téléchargement direct
+### Option 2 : Installation avec support PDF
+
+```bash
+# Clone du repository
+git clone https://github.com/Kiwi41/ape-commandes-vanille.git
+cd ape-commandes-vanille
+
+# Installation des dépendances pour le PDF
+pip install -r requirements.txt
+```
+
+**Note Windows** : `weasyprint` nécessite GTK+ sur Windows.  
+📥 Téléchargez-le depuis : [GTK+ for Windows](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
+
+### Option 3 : Téléchargement direct (sans Git)
 
 1. Téléchargez `generer_bons_commande.py`
 2. Placez-le dans le dossier de votre choix
 
 ## 🚀 Utilisation
 
-### Mode 1 : Auto-détection (recommandé)
+### Mode 1 : Génération HTML simple (recommandé)
 
 Placez votre fichier CSV dans le dossier **Downloads** avec "vanille" dans le nom, puis lancez :
 
@@ -66,6 +82,35 @@ python generer_bons_commande.py
 ```
 
 Appuyez sur **Entrée** pour que le script détecte automatiquement le dernier fichier.
+
+### Mode 2 : Génération avec export PDF
+
+```bash
+# Générer HTML + PDF
+python generer_bons_commande.py --pdf
+
+# Générer uniquement le PDF (pas de HTML)
+python generer_bons_commande.py --pdf-only
+```
+
+### Mode 3 : Avec chemin de fichier spécifique
+
+```bash
+# HTML seulement
+python generer_bons_commande.py chemin/vers/votre/fichier.csv
+
+# HTML + PDF
+python generer_bons_commande.py chemin/vers/votre/fichier.csv --pdf
+```
+
+### Options disponibles
+
+| Option | Description |
+|--------|-------------|
+| (aucune) | Génère uniquement le HTML et l'ouvre dans le navigateur |
+| `--pdf` | Génère HTML + PDF |
+| `--pdf-only` | Génère uniquement le PDF (pas de HTML) |
+| `-h, --help` | Affiche l'aide complète |
 
 ### Mode 2 : Avec argument
 

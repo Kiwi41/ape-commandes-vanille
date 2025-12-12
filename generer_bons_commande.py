@@ -17,14 +17,22 @@ from datetime import datetime
 import os
 import sys
 import webbrowser
+import argparse
 
 # ============================================================================
 # CONFIGURATION - Modifier ces paramètres selon vos besoins
 # ============================================================================
 
-# Fichier CSV d'entrée (peut être passé en argument)
-if len(sys.argv) > 1:
-    csv_file = sys.argv[1]
+# Parser d'arguments
+parser = argparse.ArgumentParser(description='Générateur de bons de commande pour ventes APE')
+parser.add_argument('csv_file', nargs='?', help='Chemin du fichier CSV d\'export')
+parser.add_argument('--pdf', action='store_true', help='Générer aussi un fichier PDF')
+parser.add_argument('--pdf-only', action='store_true', help='Générer uniquement le PDF (pas de HTML)')
+args = parser.parse_args()
+
+# Fichier CSV d'entrée
+if args.csv_file:
+    csv_file = args.csv_file
 else:
     # Par défaut, demander le fichier
     csv_file = input("Chemin du fichier CSV d'export (ou Entrée pour utiliser le dernier fichier vanille du dossier Downloads) : ").strip()
@@ -670,7 +678,7 @@ with open(output_file, 'w', encoding='utf-8') as f:
 print("=" * 70)
 print("✅ BONS DE COMMANDE GÉNÉRÉS")
 print("=" * 70)
-print(f"\n📄 Fichier créé : {os.path.basename(output_file)}")
+print(f"\n📄 Fichier HTML créé : {os.path.basename(output_file)}")
 print(f"📂 Emplacement : {output_dir}")
 print(f"\n📊 Récapitulatif :")
 print(f"   • Total de bons : {bon_numero - 1}")
@@ -678,13 +686,81 @@ print(f"   • Avec classe (vert) : {nb_avec_classe}")
 print(f"   • Sans classe (orange) : {nb_sans_classe}")
 print(f"   • Montant total : {total_montant:.2f} €")
 print(f"   • Période : {periode_text}")
-print("\n💡 Ouverture automatique du fichier dans le navigateur...")
-print("=" * 70)
 
-# Ouvrir automatiquement le fichier dans le navigateur
-try:
-    webbrowser.open(output_file)
-    print("\n✓ Fichier ouvert dans le navigateur")
-except:
-    print("\n⚠ Impossible d'ouvrir automatiquement le fichier")
-    print(f"   Ouvrez manuellement : {output_file}")
+# ============================================================================
+# GÉNÉRATION DU PDF (si demandé)
+# ============================================================================
+
+pdf_file = None
+if args.pdf or args.pdf_only:
+    print("\n" + "=" * 70)
+    print("� GÉNÉRATION DU PDF")
+    print("=" * 70)
+    
+    try:
+        from weasyprint import HTML, CSS
+        
+        pdf_file = os.path.join(output_dir, f"bons_commande_{base_name}.pdf")
+        
+        # CSS spécifique pour le PDF (optimisation impression)
+        pdf_css = CSS(string="""
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+            .bon-commande {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+        """)
+        
+        # Générer le PDF depuis le HTML
+        print("⏳ Conversion HTML → PDF en cours...")
+        HTML(string=html_content).write_pdf(pdf_file, stylesheets=[pdf_css])
+        
+        print(f"✓ Fichier PDF créé : {os.path.basename(pdf_file)}")
+        print(f"📂 Emplacement : {output_dir}")
+        
+    except ImportError:
+        print("\n⚠️  ERREUR : La bibliothèque 'weasyprint' n'est pas installée")
+        print("\n💡 Pour installer weasyprint, exécutez :")
+        print("   pip install weasyprint")
+        print("\n📝 Note : weasyprint nécessite aussi GTK+ sur Windows")
+        print("   Téléchargez-le depuis : https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases")
+        print("\n   Alternative simple : utilisez l'impression PDF de votre navigateur")
+        pdf_file = None
+    except Exception as e:
+        print(f"\n❌ Erreur lors de la génération du PDF : {e}")
+        print("💡 Vous pouvez utiliser l'impression PDF de votre navigateur à la place")
+        pdf_file = None
+
+print("\n" + "=" * 70)
+
+# Ouvrir automatiquement le fichier
+if not args.pdf_only:
+    print("💡 Ouverture du fichier HTML dans le navigateur...")
+    try:
+        webbrowser.open(output_file)
+        print("✓ Fichier HTML ouvert dans le navigateur")
+    except:
+        print("⚠ Impossible d'ouvrir automatiquement le fichier")
+        print(f"   Ouvrez manuellement : {output_file}")
+elif pdf_file:
+    print("💡 Ouverture du fichier PDF...")
+    try:
+        webbrowser.open(pdf_file)
+        print("✓ Fichier PDF ouvert")
+    except:
+        print("⚠ Impossible d'ouvrir automatiquement le fichier")
+        print(f"   Ouvrez manuellement : {pdf_file}")
+
+print("=" * 70)
+print("\n✨ Génération terminée avec succès !")
+if not args.pdf_only:
+    print(f"📄 HTML : {output_file}")
+if pdf_file:
+    print(f"📄 PDF  : {pdf_file}")
+print()

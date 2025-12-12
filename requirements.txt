@@ -1,0 +1,4 @@
+# Dépendances de base (aucune - Python stdlib uniquement)
+
+# Dépendances optionnelles pour l'export PDF
+weasyprint>=60.0  # Pour générer des PDF directement depuis le script

@@ -5,6 +5,26 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.1.0] - 2025-12-12
+
+### ✨ Ajouté
+- **Export PDF direct** avec l'option `--pdf` ou `--pdf-only`
+- Support de `argparse` pour une meilleure gestion des arguments
+- Fichier `requirements.txt` pour les dépendances optionnelles
+- Guide d'installation PDF (`INSTALL_PDF.md`)
+- Gestion d'erreur gracieuse si weasyprint n'est pas installé
+- CSS spécifique pour optimiser le rendu PDF
+
+### 🔧 Modifié
+- Arguments en ligne de commande refactorisés avec argparse
+- README mis à jour avec les nouvelles options d'utilisation
+- Messages de sortie plus clairs et informatifs
+
+### 📚 Documentation
+- Ajout de la section "Export PDF" dans le README
+- Instructions d'installation détaillées pour Windows/Linux/macOS
+- Alternative avec impression navigateur documentée
+
 ## [1.0.0] - 2025-12-12
 
 ### ✨ Ajouté
@@ -37,7 +57,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Future] - À venir
 
 ### 🔮 Prévu
-- Export PDF direct
+- ✅ ~~Export PDF direct~~ (Ajouté en v1.1.0)
 - Interface graphique (GUI)
 - Statistiques par classe
 - Filtrage par moyen de paiement
@@ -48,4 +68,5 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ---
 
-[1.0.0]: https://github.com/votre-username/ape-commandes-vanille/releases/tag/v1.0.0
+[1.1.0]: https://github.com/Kiwi41/ape-commandes-vanille/releases/tag/v1.1.0
+[1.0.0]: https://github.com/Kiwi41/ape-commandes-vanille/releases/tag/v1.0.0
