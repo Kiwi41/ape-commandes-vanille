@@ -17,8 +17,6 @@ python generer_bons_commande.py
 python generer_bons_commande.py exemple_export_template.csv
 ```
 
-### 3. Génération avec PDF (si weasyprint installé)
-
 ```bash
 # HTML + PDF
 python generer_bons_commande.py 
@@ -82,9 +80,7 @@ python generer_bons_commande.py --help
 - Vérifiez que le fichier contient "vanille" dans son nom
 - Ou spécifiez le chemin complet : `python generer_bons_commande.py C:\chemin\vers\fichier.csv`
 
-### Erreur "weasyprint not found"
-- C'est normal si vous n'avez pas installé weasyprint
-- Utilisez sans `- Voir `INSTALL_PDF.md` pour installer weasyprint
+### Génération PDF
 
 ### Le fichier ne s'ouvre pas automatiquement
 - Ouvrez manuellement le fichier HTML/PDF généré
