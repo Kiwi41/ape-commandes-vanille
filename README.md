@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub release](https://img.shields.io/badge/release-v1.1.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
+[![GitHub release](https://img.shields.io/badge/release-v1.2.0-brightgreen.svg)](https://github.com/Kiwi41/ape-commandes-vanille/releases)
 
 Script Python pour générer automatiquement des bons de commande imprimables à partir d'un export CSV de commandes de produits vanille (ou tout autre produit).
 
@@ -44,7 +44,12 @@ python generer_bons_commande.py --pdf
 - **🎨 Code couleur visuel** :
   - 🟢 **Vert** : Commandes avec classe assignée (livraison facilitée)
   - 🟠 **Orange** : Commandes sans classe (nécessite vérification)
-- **💳 Icônes de paiement** :
+- **� Statistiques par classe** :
+  - Nombre d'enfants par classe
+  - Nombre de familles par classe
+  - Montant total par classe
+  - Tableau récapitulatif interactif dans le HTML
+- **�💳 Icônes de paiement** :
   - 💳 Carte bancaire
   - 💵 Espèces
   - 📝 Chèque

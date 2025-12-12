@@ -5,6 +5,24 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.2.0] - 2025-12-12
+
+### ✨ Ajouté
+- **Statistiques par classe** affichées dans la console et le HTML
+- Tableau récapitulatif interactif avec :
+  - Nombre d'enfants par classe
+  - Nombre de familles par classe
+  - Montant total par classe
+  - Ligne de total général
+- Tri automatique des classes (Sans classe en dernier)
+- Style visuel distinct pour les commandes sans classe
+- Conseil d'utilisation pour organiser la distribution
+
+### 🎨 Améliorations
+- Affichage console enrichi avec statistiques détaillées
+- Tableau HTML responsive et imprimable
+- Code couleur cohérent (vert/orange) dans les statistiques
+
 ## [1.1.0] - 2025-12-12
 
 ### ✨ Ajouté
@@ -58,13 +76,20 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### 🔮 Prévu
 - ✅ ~~Export PDF direct~~ (Ajouté en v1.1.0)
+- ✅ ~~Statistiques par classe~~ (Ajouté en v1.2.0)
 - Interface graphique (GUI)
-- Statistiques par classe
 - Filtrage par moyen de paiement
 - Envoi automatique par email
 - Support des réductions/remises
 - Multi-langues (anglais)
 - Mode batch pour plusieurs campagnes
+
+---
+
+[1.2.0]: https://github.com/Kiwi41/ape-commandes-vanille/releases/tag/v1.2.0
+[1.1.0]: https://github.com/Kiwi41/ape-commandes-vanille/releases/tag/v1.1.0
+[1.0.0]: https://github.com/Kiwi41/ape-commandes-vanille/releases/tag/v1.0.0
+
 
 ---
 
