@@ -29,6 +29,7 @@ class GenerateurGUI:
         # Variables
         self.csv_file = tk.StringVar()
         self.auto_open = tk.BooleanVar(value=True)
+        self.last_output_dir = None  # Dernier dossier de sortie
         
         # Chemin du script principal
         # Déterminer le chemin du script (compatible PyInstaller)
@@ -253,6 +254,10 @@ class GenerateurGUI:
             # Construire la commande
             cmd = [sys.executable, str(self.script_path), self.csv_file.get()]
             
+            # Ajouter l'option --no-browser si l'utilisateur ne veut pas ouvrir automatiquement
+            if not self.auto_open.get():
+                cmd.append('--no-browser')
+
             # Exécuter le script
             process = subprocess.Popen(
                 cmd,
@@ -263,9 +268,19 @@ class GenerateurGUI:
                 bufsize=1
             )
             
-            # Lire la sortie en temps réel
+
+            # Lire la sortie en temps réel et capturer le dossier de sortie
             for line in process.stdout:
                 self.root.after(0, self.log, line.rstrip())
+                
+                # Capturer le dossier de sortie
+                if "📂 Emplacement :" in line or "Emplacement :" in line:
+                    # Extraire le chemin du dossier
+                    try:
+                        self.last_output_dir = line.split(":", 1)[1].strip()
+                    except:
+                        pass
+
             
             process.wait()
             

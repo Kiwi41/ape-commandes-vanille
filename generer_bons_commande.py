@@ -33,6 +33,7 @@ if sys.platform == 'win32':
 # Parser d'arguments
 parser = argparse.ArgumentParser(description='Générateur de bons de commande pour ventes APE')
 parser.add_argument('csv_file', nargs='?', help='Chemin du fichier CSV d\'export')
+parser.add_argument('--no-browser', action='store_true', help='Ne pas ouvrir automatiquement le navigateur')
 args = parser.parse_args()
 
 # Fichier CSV d'entrée
@@ -805,5 +806,13 @@ print(f"   • Avec classe (vert) : {nb_avec_classe}")
 print(f"   • Sans classe (orange) : {nb_sans_classe}")
 print(f"   • Montant total : {total_montant:.2f} €")
 print(f"   • Période : {periode_text}")
+
+# Ouvrir automatiquement dans le navigateur (sauf si --no-browser)
+if not args.no_browser:
+    print(f"\n🌐 Ouverture du fichier HTML dans le navigateur...")
+    abs_path = os.path.abspath(output_file)
+    webbrowser.open(f'file://{abs_path}')
+    print(f"✓ Fichier ouvert : {os.path.basename(output_file)}")
+
 
 # ============================================================================
