@@ -208,14 +208,22 @@ if stats_par_classe:
     
     print("-" * 70)
 
-# Générer le nom du fichier de sortie
+# Générer le nom du fichier de sortie avec un dossier horodaté
 base_name = os.path.splitext(os.path.basename(csv_file))[0]
-output_dir = os.path.dirname(csv_file)
-if not output_dir:
-    output_dir = os.path.join(os.path.expanduser("~"), "Downloads")
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+# Déterminer le dossier de base (où se trouve le CSV, sinon Downloads)
+base_dir = os.path.dirname(csv_file)
+if not base_dir:
+    base_dir = os.path.join(os.path.expanduser("~"), "Downloads")
+
+# Créer un sous-dossier avec timestamp
+output_dir = os.path.join(base_dir, f"bons_commande_{timestamp}")
+os.makedirs(output_dir, exist_ok=True)
 
 output_file = os.path.join(output_dir, f"bons_commande_{base_name}.html")
-print(f"✓ Fichier de sortie : {os.path.basename(output_file)}")
+print(f"✓ Dossier de sortie : {os.path.basename(output_dir)}")
+print(f"✓ Fichier HTML : {os.path.basename(output_file)}")
 print("=" * 70 + "\n")
 
 # ============================================================================
