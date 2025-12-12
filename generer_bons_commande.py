@@ -159,10 +159,48 @@ else:
     periode_text = f"Année {datetime.now().year}"
     print(f"⚠ Période non détectée, utilisation par défaut : {periode_text}")
 
-# Afficher les statistiques
+# ============================================================================
+# STATISTIQUES PAR CLASSE
+# ============================================================================
+
+# Calculer les statistiques par classe
+stats_par_classe = defaultdict(lambda: {'nb_commandes': 0, 'nb_enfants': 0, 'montant': 0.0, 'payeurs': set()})
+
+for payeur, info in commandes_finales.items():
+    if info['enfants']:
+        for enfant, classe in info['enfants'].items():
+            stats_par_classe[classe]['nb_commandes'] += 1
+            stats_par_classe[classe]['nb_enfants'] += 1
+            stats_par_classe[classe]['montant'] += info['total']
+            stats_par_classe[classe]['payeurs'].add(payeur)
+    else:
+        # Si pas d'enfants associés, compter comme "Sans classe"
+        stats_par_classe['Sans classe']['nb_commandes'] += 1
+        stats_par_classe['Sans classe']['montant'] += info['total']
+        stats_par_classe['Sans classe']['payeurs'].add(payeur)
+
+# Afficher les statistiques globales
 print(f"✓ {len(commandes_finales)} payeur(s) avec commandes")
 total_montant = sum(info['total'] for info in commandes_finales.values())
 print(f"✓ Montant total : {total_montant:.2f} €")
+
+# Afficher les statistiques par classe
+if stats_par_classe:
+    print(f"\n📊 Statistiques par classe :")
+    print("-" * 70)
+    
+    # Trier les classes (Sans classe en dernier)
+    classes_triees = sorted(stats_par_classe.keys(), 
+                           key=lambda x: (x == "Sans classe", x))
+    
+    for classe in classes_triees:
+        stats = stats_par_classe[classe]
+        nb_familles = len(stats['payeurs'])
+        print(f"  {classe:20s} : {stats['nb_enfants']:3d} enfant(s), "
+              f"{nb_familles:3d} famille(s), "
+              f"{stats['montant']:7.2f} €")
+    
+    print("-" * 70)
 
 # Générer le nom du fichier de sortie
 base_name = os.path.splitext(os.path.basename(csv_file))[0]
@@ -660,14 +698,90 @@ for payeur, info in sorted(commandes_finales.items()):
 """
     bon_numero += 1
 
+# ============================================================================
+# SECTION RÉCAPITULATIF ET STATISTIQUES
+# ============================================================================
+
 html_content += f"""
     <div class="no-print" style="margin-top: 30px; text-align: center; background: white; padding: 20px; border-radius: 8px;">
-        <h3>📊 Récapitulatif</h3>
+        <h3>📊 Récapitulatif Général</h3>
         <p><strong>Total : {bon_numero - 1} bon(s) de commande</strong></p>
         <p>✅ Avec classe : {nb_avec_classe} | ⚠️ Sans classe : {nb_sans_classe}</p>
         <p>💰 Montant total : {total_montant:.2f} €</p>
         <button onclick="window.print()">🖨️ Imprimer tous les bons</button>
     </div>
+"""
+
+# Ajouter les statistiques par classe si disponibles
+if stats_par_classe:
+    html_content += """
+    <div class="no-print" style="margin-top: 20px; background: white; padding: 25px; border-radius: 8px; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <h3 style="color: #4CAF50; border-bottom: 3px solid #4CAF50; padding-bottom: 10px; margin-bottom: 20px;">
+            📈 Statistiques par Classe
+        </h3>
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background-color: #f5f5f5; border-bottom: 2px solid #4CAF50;">
+                    <th style="padding: 12px; font-weight: bold; color: #333;">Classe</th>
+                    <th style="padding: 12px; font-weight: bold; color: #333; text-align: center;">Enfants</th>
+                    <th style="padding: 12px; font-weight: bold; color: #333; text-align: center;">Familles</th>
+                    <th style="padding: 12px; font-weight: bold; color: #333; text-align: right;">Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+"""
+    
+    # Trier les classes (Sans classe en dernier)
+    classes_triees = sorted(stats_par_classe.keys(), 
+                           key=lambda x: (x == "Sans classe", x))
+    
+    for classe in classes_triees:
+        stats = stats_par_classe[classe]
+        nb_familles = len(stats['payeurs'])
+        
+        # Style différent pour "Sans classe"
+        row_style = ""
+        if classe == "Sans classe":
+            row_style = "background-color: #FFF3E0; border-top: 2px solid #FF9800;"
+        
+        html_content += f"""
+                <tr style="{row_style}">
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">
+                        <strong>{classe}</strong>
+                    </td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0; text-align: center;">
+                        👨‍👩‍👧‍👦 {stats['nb_enfants']}
+                    </td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0; text-align: center;">
+                        👥 {nb_familles}
+                    </td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0; text-align: right; font-weight: bold; color: #4CAF50;">
+                        {stats['montant']:.2f} €
+                    </td>
+                </tr>
+"""
+    
+    html_content += f"""
+            </tbody>
+            <tfoot>
+                <tr style="background-color: #4CAF50; color: white; font-weight: bold;">
+                    <td style="padding: 15px;">TOTAL</td>
+                    <td style="padding: 15px; text-align: center;">{sum(s['nb_enfants'] for s in stats_par_classe.values())}</td>
+                    <td style="padding: 15px; text-align: center;">{len(commandes_finales)}</td>
+                    <td style="padding: 15px; text-align: right;">{total_montant:.2f} €</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <div style="margin-top: 20px; padding: 15px; background-color: #E8F5E9; border-left: 4px solid #4CAF50; border-radius: 4px;">
+            <p style="margin: 5px 0; color: #2E7D32;">
+                <strong>💡 Conseil :</strong> Utilisez ces statistiques pour organiser la distribution par classe.
+            </p>
+        </div>
+    </div>
+"""
+
+html_content += """
 </body>
 </html>
 """
